@@ -1,3 +1,1 @@
-
-todolist
-[demo](https://zhanghao-zhoushan.github.io/react-todolist/public/index.html)
+[To Do List](https://zhanghao-zhoushan.github.io/react-todolist/build/index.html)
