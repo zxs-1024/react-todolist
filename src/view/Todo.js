@@ -13,7 +13,7 @@ class Todo extends Component {
     return (
       <li className="todo">
         <input className="checkbox" type="checkbox" checked={isDone} onChange={this.handleChange} />
-        <span className="value">This Is Item {value} {isDone.toString()} {index}</span>
+        <span className="value">{`${index + 1}、`}{value}</span>
         <span className="delete" onClick={this.hanldeDelete}>Delete</span>
       </li>
     )
