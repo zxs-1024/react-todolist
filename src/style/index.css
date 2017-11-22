@@ -39,6 +39,12 @@ ul, li{
   font-weight: bold;
 }
 
+@media screen and (max-width: 650px) {
+  .main{
+    width: 90%;
+  }
+}
+
 .todo{
   position: relative;
   background: #fff;
@@ -57,7 +63,7 @@ ul, li{
 .delete{
   position: absolute;
   top: 6.5px;
-  right: 10px;
+  right: 6.5px;
   color: #000;
   color: #fff;
   background-color: #61dafb;
@@ -87,13 +93,7 @@ ul, li{
 }
 
 .footer{
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
   color: #61dafb;
-}
-
-@media screen and (max-width: 650px) {
-  .main, .footer{
-    width: 90%;
-  }
 }

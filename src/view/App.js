@@ -12,11 +12,6 @@ class App extends Component {
       isAllChecked: false
     }
   }
-
-  componentDidMount() {
-    this.checkAllChecked()
-  }
-
   addTodo = todo => {
     const todos = this.state.todos
     todos.push(todo)
@@ -32,7 +27,6 @@ class App extends Component {
     this.setState({
       todos: todos
     })
-    this.checkAllChecked()
     this.setLocalStorage(todos)
   }
 
@@ -45,27 +39,12 @@ class App extends Component {
     this.setState({
       todos: this.state.todos
     })
-    this.checkAllChecked()
     this.setLocalStorage(this.state.todos)
   }
 
-  handleChangeCheckedAll = isAllChecked => {
-    const todos = this.state.todos
-    todos.map(todo => {
-      return todo.isDone = isAllChecked
-    })
+  handleChangeCheckedAll = state => {
     this.setState({
-      todos: todos,
-      isAllChecked
-    })
-    this.setLocalStorage(todos)
-  }
-
-  checkAllChecked = () => {
-    let isAllChecked = false
-    if (this.state.todos.every(todo => todo.isDone)) isAllChecked = true
-    this.setState({
-      isAllChecked: isAllChecked
+      isAllChecked: state
     })
   }
 
