@@ -9,6 +9,9 @@ ul, li{
 }
 
 .header{
+  width: 60%;
+  margin: 0 auto; 
+  padding: 0 20%; 
   background: #20232a;
   color: #61dafb;
   height: 60px;
@@ -95,5 +98,9 @@ ul, li{
 @media screen and (max-width: 650px) {
   .main, .footer{
     width: 90%;
+  }
+  .header{
+    width: 100%;
+    padding: 0; 
   }
 }
