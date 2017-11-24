@@ -5,8 +5,8 @@ class Footer extends Component {
     this.props.handleChangeCheckedAll(isAllChecked)
   }
 
-  clearDone = () => {
-    this.props.clearDone()
+  clearIsDone = () => {
+    this.props.clearIsDone()
   }
   render() {
     return (
@@ -15,7 +15,7 @@ class Footer extends Component {
         <div className="todo">
           <input className="checkbox" type="checkbox" checked={this.props.isAllChecked} onChange={this.handleChangeCheckedAll} />
           <span className="value">Select All</span>
-          <span onClick={this.clearDone} className="delete">Select Delete</span>
+          <span onClick={this.clearIsDone} className="delete">Select Delete</span>
         </div>
         <p className="log">Copyright © 2017</p>
       </div>

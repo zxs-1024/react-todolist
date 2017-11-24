@@ -9,59 +9,68 @@ const CLEAR_ISDONE = 'CLEAR_ISDONE'
 const CHECKED_ALL = 'CHECKED_ALL'
 const CHANGE_ISALL = 'CHANGE_ISALL'
 
-function isAllChecked(state = {}, action) {
-  switch (action.type) {
-    case CHANGE_ISALL:
-      return !state.isAllChecked
-    default:
-      return state
-  }
-}
 
+const setLocalStorage = todos => {
+  localStorage.setItem("todos", JSON.stringify(todos))
+}
 function todos(state = {}, action) {
+  let todos = []
   switch (action.type) {
     case INIT_TODOS:
+      todos = JSON.parse(localStorage.getItem('todos')) || []
       return {
-        todos: JSON.parse(localStorage.getItem('todos')) || []
+        todos,
+        isAllChecked: todos.every(todo => todo.isDone)
       }
     case ADD_TODO:
-      console.log(state)
+      todos = [
+        ...state.todos,
+        action.todo
+      ]
+      setLocalStorage(todos)
       return {
-        todos: [
-          ...state.todos,
-          action.todo
-        ]
+        todos
       }
     case DELETE_TODO:
+      todos = [
+        ...state.todos.slice(0, action.index),
+        ...state.todos.slice(action.index + 1)
+      ]
+      setLocalStorage(todos)
       return {
-        todos: [
-          ...state.todos.slice(0, action.index),
-          ...state.todos.slice(action.index + 1)
-        ]
+        todos
       }
     case CHANGE_ISDONE:
       const change = action.change
       state.todos[change.index].isDone = change.isDone
+      todos = [
+        ...state.todos
+      ]
+      setLocalStorage(todos)
       return {
-        todos: [
-          ...state.todos
-        ]
+        todos,
+        isAllChecked: state.todos.every(todo => todo.isDone)
       }
     case CLEAR_ISDONE:
+      todos = [
+        ...state.todos.filter(todo => !todo.isDone)
+      ]
+      setLocalStorage(todos)
       return {
-        todos: [
-          ...state.todos.filter(todo => !todo.isDone)
-        ]
+        todos
       }
     case CHECKED_ALL:
-      console.log(state)
+      const isAllChecked = !state.isAllChecked
       state.todos.map(todo => {
-        return todo.isDone = !state.isAllChecked
+        return todo.isDone = isAllChecked
       })
+      todos = [
+        ...state.todos
+      ]
+      setLocalStorage(todos)
       return {
-        todos: [
-          ...state.todos
-        ]
+        todos,
+        isAllChecked
       }
     default:
       return state
@@ -69,8 +78,7 @@ function todos(state = {}, action) {
 }
 
 export default combineReducers({
-  todos,
-  isAllChecked
+  todos
 })
 
 //action creaters
@@ -102,3 +110,4 @@ export const checkedAll = () => {
 export const changeIsAll = () => {
   return { type: CHANGE_ISALL }
 }
+
