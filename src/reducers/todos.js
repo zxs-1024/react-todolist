@@ -38,7 +38,8 @@ function todos(state = {}, action) {
       ]
       setLocalStorage(todos)
       return {
-        todos
+        todos,
+        isAllChecked: todos.every(todo => todo.isDone)
       }
     case CHANGE_ISDONE:
       const change = action.change
