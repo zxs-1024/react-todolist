@@ -3,15 +3,16 @@ import Todo from './Todo'
 
 class TodoNav extends Component {
   render() {
+    const todos = this.props.todos || []
     return (
       <ul className="main">
         <li className="nav">{this.props.isDoing ? 'isDoing' : 'isDone'}</li>
         {
           this.props.isDoing ?
-            this.props.todos.map((todo, index) => (
+            todos.map((todo, index) => (
               !todo.isDone &&
               < Todo index={index} key={index} { ...todo } { ...this.props } />
-            )) : this.props.todos.map((todo, index) => (
+            )) : todos.map((todo, index) => (
               todo.isDone &&
               < Todo index={index} key={index} { ...todo } { ...this.props } />
             ))
