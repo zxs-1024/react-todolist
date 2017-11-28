@@ -8,6 +8,7 @@ const CHANGE_ISDONE = 'CHANGE_ISDONE'
 const CLEAR_ISDONE = 'CLEAR_ISDONE'
 const CHECKED_ALL = 'CHECKED_ALL'
 const CHANGE_ISALL = 'CHANGE_ISALL'
+const TEST_SAY = 'TEST_SAY'
 
 
 const setLocalStorage = todos => {
@@ -78,8 +79,22 @@ function todos(state = {}, action) {
   }
 }
 
+function speaker(state = {}, action) {
+  console.log('speaker was called with state', state, 'and action', action)
+  switch (action.type) {
+    case 'TEST_SAY':
+      return {
+        ...state,
+        message: action.message
+      }
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  todos
+  todos,
+  speaker
 })
 
 //action creaters
@@ -110,5 +125,9 @@ export const checkedAll = () => {
 
 export const changeIsAll = () => {
   return { type: CHANGE_ISALL }
+}
+
+export const sayAbout = (message) => {
+  return { type: TEST_SAY, message }
 }
 

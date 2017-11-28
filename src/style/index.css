@@ -104,3 +104,11 @@ ul, li{
     padding: 0; 
   }
 }
+
+.todo-redux{
+  position: relative;
+  border: 1px solid #20232a;
+  padding: 1rem;
+  color: #61dafb;
+  margin-top: 1rem;
+}

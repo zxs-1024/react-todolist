@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import TodoHeader from './TodoHeader'
 import TodoList from './TodoList'
 import TodoFooter from './TodoFooter'
-import { initTodo, addTodo, deleteTodo, changeIsDone, clearIsDone, checkedAll, changeIsAll } from '../reducers/todos'
+import TodoRedux from './TodoRedux'
+import { initTodo, addTodo, deleteTodo, changeIsDone, clearIsDone, checkedAll, changeIsAll, sayAbout } from '../reducers/todos'
 
 class App extends Component {
   componentDidMount() {
@@ -34,11 +35,17 @@ class App extends Component {
     this.props.clearIsDone()
   }
 
+  hanldeSaySomething = (msg) => {
+    console.log(msg)
+    this.props.sayAbout(msg)
+  }
+
   render() {
     const isAllChecked = this.props.todos.isAllChecked || false
     return (
       <div>
         <TodoHeader addTodo={this.addTodo} />
+        <TodoRedux {...this.props} hanldeSaySomething={this.hanldeSaySomething} />
         <TodoList {...this.props.todos} handleChangeIsDone={this.handleChangeIsDone} handleDeleteTodo={this.handleDeleteTodo} />
         <TodoFooter isAllChecked={isAllChecked} handleChangeCheckedAll={this.handleChangeCheckedAll} clearIsDone={this.clearIsDone} />
       </div>
@@ -75,6 +82,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeIsAll: () => {
       dispatch(changeIsAll())
+    },
+    sayAbout: (msg) => {
+      dispatch(sayAbout(msg))
     }
   }
 }
