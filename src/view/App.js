@@ -5,7 +5,11 @@ import TodoList from './TodoList'
 import TodoFooter from './TodoFooter'
 import TodoRedux from './TodoRedux'
 import { initTodo, addTodo, deleteTodo, changeIsDone, clearIsDone, checkedAll, changeIsAll, sayAbout } from '../reducers/todos'
+import fetch from 'isomorphic-fetch'
 
+import Es6Promise from 'es6-promise'
+Es6Promise.polyfill()
+// import fetch from 'isomorphic-fetch'
 class App extends Component {
   componentDidMount() {
     this.props.initTodo()
@@ -36,16 +40,19 @@ class App extends Component {
   }
 
   hanldeSaySomething = (msg) => {
-    console.log(msg)
     this.props.sayAbout(msg)
   }
 
   render() {
     const isAllChecked = this.props.todos.isAllChecked || false
+    console.log('render this.props.speak is ' + this.props.speak.message)
+    const speaker = this.props.speak
+    console.log('Start render === ' + new Date())
+    console.log(speaker)
     return (
       <div>
         <TodoHeader addTodo={this.addTodo} />
-        <TodoRedux {...this.props} hanldeSaySomething={this.hanldeSaySomething} />
+        <TodoRedux message={speaker.message} hanldeSaySomething={this.hanldeSaySomething} />
         <TodoList {...this.props.todos} handleChangeIsDone={this.handleChangeIsDone} handleDeleteTodo={this.handleDeleteTodo} />
         <TodoFooter isAllChecked={isAllChecked} handleChangeCheckedAll={this.handleChangeCheckedAll} clearIsDone={this.clearIsDone} />
       </div>
@@ -56,7 +63,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     todos: state.todos,
-    isAllChecked: state.isAllChecked
+    speak: state.speak
   }
 }
 
@@ -84,7 +91,23 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(changeIsAll())
     },
     sayAbout: (msg) => {
-      dispatch(sayAbout(msg))
+      // fetchSecretSauce().then(
+      //   sauce => dispatch(makeASandwich(forPerson, sauce)),
+      //   error => dispatch(apologize('The Sandwich Shop', forPerson, error))
+      // )
+      console.log('Start dispatch ==== ' + new Date())
+      fetch('http://ip.taobao.com/service/getIpInfo.php?ip=59.108.51.32', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => {
+        console.log('fetch-success' + res)
+        dispatch(sayAbout(msg))
+      }, err => {
+        console.log('fetch-err' + err)
+        dispatch(sayAbout('error'))
+      })
     }
   }
 }

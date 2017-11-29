@@ -4,10 +4,13 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "es6-promise": "^4.1.1",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -9,7 +9,7 @@ class TodoRedux extends Component {
     return (
       <div className="todo-redux">
         this is test redux
-        <p>{this.props.massage}</p>
+        <p>{this.props.message}</p>
         <span onClick={this.hanldeSaySomething} className="delete">SAY</span>
       </div>
     )

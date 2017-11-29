@@ -79,10 +79,10 @@ function todos(state = {}, action) {
   }
 }
 
-function speaker(state = {}, action) {
-  console.log('speaker was called with state', state, 'and action', action)
+function speak(state = {}, action) {
   switch (action.type) {
     case 'TEST_SAY':
+      console.log('speaker was called with state', state, 'and action', action)
       return {
         ...state,
         message: action.message
@@ -93,8 +93,8 @@ function speaker(state = {}, action) {
 }
 
 export default combineReducers({
-  todos,
-  speaker
+  speak,
+  todos
 })
 
 //action creaters
