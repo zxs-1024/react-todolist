@@ -18,5 +18,5 @@
 
 5. 在项目中新建 `index.html` 页面，进入刚才生成的静态地址即可访问。
 
-> ps: `react npm run build` 创建项目部署后后有静态文件地址错误，导致页面 `404`，原因是 `create-react-app` 的 `webpack.conifg.js` 中使用 / 生成地址，在 `package.json` 加上 `"homepage": "."` 即可。
+> PS: `react npm run build` 创建项目部署后后有静态文件地址错误，导致页面 `404`，原因是 `create-react-app` 的 `webpack.conifg.js` 中使用 / 生成地址，在 `package.json` 加上 `"homepage": "."` 即可。
 

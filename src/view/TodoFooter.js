@@ -17,7 +17,7 @@ class Footer extends Component {
           <span className="value">Select All</span>
           <span onClick={this.clearIsDone} className="delete">Select Delete</span>
         </div>
-        <p className="log">Copyright © 2017</p>
+        <p className="log">Copyright © 2017 by Sailor</p>
       </div>
     )
   }
