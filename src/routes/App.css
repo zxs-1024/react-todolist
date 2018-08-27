@@ -1,0 +1,100 @@
+.header{
+  width: 60%;
+  margin: 0 auto; 
+  padding: 0 20%; 
+  background: #20232a;
+  color: #61dafb;
+  height: 60px;
+  line-height: 60px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-input{
+  width: 60%;
+  height: 24px;
+  background: #20232a;
+  color: #fff;
+  text-indent: 10px;
+  border: none;
+  display: block;
+  margin: 17px 0;
+}
+
+.main{
+  color: #61dafb;
+  width: 60%;
+  padding: 0;
+  margin: 1rem auto;
+}
+
+.nav{
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.todo{
+  position: relative;
+  background: #fff;
+  border-radius: 3px;
+  border-left: 5px solid #61dafb;
+  margin-bottom: 15px;
+}
+
+.checkbox{
+  width: 22px;
+  height: 22px;
+  margin: 0 0 0 12px;
+  cursor: pointer;
+  vertical-align: text-bottom;
+}
+
+.delete{
+  position: absolute;
+  top: 6.5px;
+  right: 10px;
+  color: #000;
+  color: #fff;
+  background-color: #61dafb;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
+}
+
+.delete:hover {
+  background-color: #f7f7f7;
+  color: #61dafb;
+}
+
+.value{
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+}
+
+.log{
+  color: #20232a;
+  font-size: 14px;
+  text-align: center;
+}
+
+.footer{
+  width: 60%;
+  margin: 0 auto;
+  color: #61dafb;
+}
+
+@media screen and (max-width: 650px) {
+  .main, .footer{
+    width: 90%;
+  }
+  .header{
+    width: 100%;
+    padding: 0; 
+  }
+}
