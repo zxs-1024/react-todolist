@@ -1,25 +1,34 @@
 import React, { Component } from 'react'
+import { connect } from 'dva'
+import styles from '../routes/App.css'
 
 class Todo extends Component {
-  hanldeDelete = () => {
-    this.props.handleDeleteTodo(this.props.index)
+  handleDelete = () => {
+    const { index } = this.props
+    this.props.dispatch({
+      type: 'todo/deleteTodo',
+      payload: { index }
+    })
   }
 
   handleChange = () => {
-    const isDone = !this.props.isDone
-    this.props.handleChangeIsDone(this.props.index, isDone)
+    const { index, todo: { isDone } } = this.props
+    this.props.dispatch({
+      type: 'todo/changeIsDone',
+      payload: { index, isDone }
+    })
   }
 
   render() {
-    const { value, isDone, index } = this.props
+    const { todo: { isDone, value }, index } = this.props
     return (
-      <li className="todo">
-        <input className="checkbox" type="checkbox" checked={isDone} onChange={this.handleChange} />
-        <span className="value">{`${index + 1}、`}{value}</span>
-        <span className="delete" onClick={this.hanldeDelete}>Delete</span>
+      <li className={styles.todo}>
+        <input className={styles.checkbox} type="checkbox" checked={isDone} onChange={this.handleChange} />
+        <span className={styles.value}>{`${index + 1}、`}{value}</span>
+        <span className={styles.delete} onClick={this.handleDelete}>Delete</span>
       </li>
     )
   }
 }
 
-export default Todo
+export default connect()(Todo)

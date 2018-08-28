@@ -1,17 +1,24 @@
 import React, { Component } from 'react'
+import { connect } from 'dva'
 import styles from '../routes/App.css'
-// import PropTypes from 'prop-types'
 
 class TodoFooter extends Component {
   handleChangeCheckedAll = () => {
     const isAllChecked = !this.props.isAllChecked
-    this.props.handleChangeCheckedAll(isAllChecked)
+    this.props.dispatch({
+      type: 'todo/checkedAll',
+      payload: {
+        isAllChecked
+      }
+    })
   }
 
   clearIsDone = () => {
-    this.props.clearIsDone()
+    this.props.dispatch({
+      type: 'todo/clearIsDone'
+    })
   }
-  
+
   render() {
     return (
       <div className={styles.footer}>
@@ -27,9 +34,10 @@ class TodoFooter extends Component {
   }
 }
 
-TodoFooter.propTypes = {
-  // onDelete: PropTypes.func.isRequired,
-  // products: PropTypes.array.isRequired,
+function mapStateToProps(state) {
+  return {
+    isAllChecked: state.todo.isAllChecked
+  }
 }
 
-export default TodoFooter
+export default connect(mapStateToProps)(TodoFooter)
