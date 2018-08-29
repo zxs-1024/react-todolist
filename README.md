@@ -27,7 +27,7 @@
 
 ### redux-actions
 
-异步操作的解决方案，`store.dispatch` 函数接收一个 `Promise` 对象作为参数。
+异步操作的解决方案，让 `store.dispatch` 函数接收一个 `Promise` 对象作为参数。
 
 ### redux-thunk
 
@@ -89,7 +89,15 @@ app.model({
 });
 ```
 
+### dva-loading
 
+[dva-loading 实践用法](https://www.jianshu.com/p/61fe7a57fad4)
+
+### UmiJS
+
+可插拔的企业级 react 应用框架。
+
+[UmiJS](https://umijs.org/guide/with-dva.html#%E7%89%B9%E6%80%A7)
 
 ### classnames
 
@@ -98,3 +106,8 @@ app.model({
 ### JS 函数式编程指南
 
 [JS 函数式编程指南](https://github.com/llh911001/mostly-adequate-guide-chinese)
+
+
+### logoAnt Design Pro
+
+[Ant Design Pro](https://pro.ant.design/docs/router-and-nav)
