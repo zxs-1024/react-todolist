@@ -11,12 +11,6 @@ class App extends React.Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'todo/initTodo'
-    })
-  }
-
   render() {
     return (
       <div>
@@ -30,7 +24,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    list: state.todo.list
+    todo: state.todo
   }
 }
 

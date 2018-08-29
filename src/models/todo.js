@@ -1,49 +1,35 @@
-
-const setLocalStorage = todos => {
-  localStorage.setItem('todos', JSON.stringify(todos))
-}
-
 export default {
 
   namespace: 'todo',
 
   state: {
     todos: [],
-    isDone: false,
     isAllChecked: false
   },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
+      return history.listen(({ pathname }) => {
+        console.log('subscriptions', pathname)
+      })
     },
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save' });
+    *save({ payload }, { call, put }) {  // eslint-disable-line
+      yield put({ type: 'addTodo' });
     },
   },
 
   reducers: {
-    initTodo(state) {
-      const todos = JSON.parse(localStorage.getItem('todos')) || []
-      return {
-        ...state,
-        todos,
-        isAllChecked: todos.every(todo => todo.isDone)
-      }
-    },
-
     addTodo(state, { payload }) {
       const todos = [...state.todos, payload]
-      setLocalStorage(todos)
       return { ...state, todos }
     },
 
     deleteTodo(state, { index }) {
       let todos = [...state.todos]
       todos.splice(index - 1, 1)
-      setLocalStorage(state.todos)
       return {
         ...state,
         todos,
@@ -53,9 +39,15 @@ export default {
 
     changeIsDone(state, { payload: { index, isDone } }) {
       let todos = [...state.todos]
+      let isAllChecked = state.isAllChecked
       todos[index].isDone = !isDone
-      setLocalStorage(state.todos)
-      return { ...state, todos }
+      const isDoneLength = todos.filter(todo => todo.isDone).length
+      if (isDoneLength === todos.length) {
+        isAllChecked = true
+      } else if (isDoneLength === 0) {
+        isAllChecked = false
+      }
+      return { ...state, todos, isAllChecked }
     },
 
     clearIsDone(state, { payload }) {
@@ -63,7 +55,6 @@ export default {
         ...state.todos.filter(todo => !todo.isDone)
       ]
       if (todos.length === 0) state.isAllChecked = false
-      setLocalStorage(todos)
       return { ...state, todos }
     },
 
@@ -73,7 +64,6 @@ export default {
         return todo.isDone = isAllChecked
       })
       const todos = [...state.todos]
-      setLocalStorage(todos)
       return {
         ...state,
         todos,
