@@ -1,5 +1,3 @@
-# dva-admin
-
 熟悉 `dva` 框架 、`Redux` 、 `Ant Design`
 
 ## 核心概念
@@ -10,30 +8,28 @@
 . connect 方法：一个函数，绑定 State 到 View
 . dispatch 方法：一个函数，发送 Action 到 State
 
-## 需要了解的
-
-### redux
+## redux
 
 [Redux 入门教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
 
 
-### redux-thunk
+## redux-thunk
 
 改造 `store.dispatch` ，让 `store.dispatch` 可以接受函数作为参数。
 
-### redux-actions
+## redux-actions
 
 异步操作的解决方案，让 `Action Creator` 返回一个 `Promise` 对象。
 
-### redux-actions
+## redux-actions
 
 异步操作的解决方案，让 `store.dispatch` 函数接收一个 `Promise` 对象作为参数。
 
-### redux-thunk
+## redux-thunk
 
 改造 `store.dispatch` ，使得后者可以接受函数作为参数。
 
-### react-redux
+## react-redux
 
 - 负责管理数据和业务逻辑，不负责 UI 的呈现
 - 带有内部状态
@@ -48,22 +44,22 @@
 `Provider` 组件，可以让容器组件拿到 `state`
 
 
-### Redux-saga
+## Redux-saga
 
 使用 redux saga 进行异步操作。
 [redux-saga-in-chinese](https://redux-saga-in-chinese.js.org/)
 
-### dva-model-extend
+## dva-model-extend
 
 扩展 `dva` 的 `model` 。
 
 [dva-model-extend](https://github.com/dvajs/dva-model-extend)
 
-### redux-saga
+## redux-saga
 
 [redux-saga](https://redux-saga-in-chinese.js.org/)
 
-### dva
+## dva
 
 > Reducer
 
@@ -89,25 +85,25 @@ app.model({
 });
 ```
 
-### dva-loading
+## dva-loading
 
 [dva-loading 实践用法](https://www.jianshu.com/p/61fe7a57fad4)
 
-### UmiJS
+## UmiJS
 
 可插拔的企业级 react 应用框架。
 
 [UmiJS](https://umijs.org/guide/with-dva.html#%E7%89%B9%E6%80%A7)
 
-### classnames
+## classnames
 
 处理多个 `className` 。
 
-### JS 函数式编程指南
+## JS 函数式编程指南
 
 [JS 函数式编程指南](https://github.com/llh911001/mostly-adequate-guide-chinese)
 
 
-### logoAnt Design Pro
+## logoAnt Design Pro
 
 [Ant Design Pro](https://pro.ant.design/docs/router-and-nav)
