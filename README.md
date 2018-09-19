@@ -19,11 +19,16 @@
  
 ## 核心概念
 
-. State：一个对象，保存整个应用状态
-. View：React 组件构成的视图层
-. Action：一个对象，描述事件
-. connect 方法：一个函数，绑定 State 到 View
-. dispatch 方法：一个函数，发送 Action 到 State
+* State：一个对象，保存整个应用状态
+State：一个对象，保存整个应用状态
+State：一个对象，保存整个应用状态
+* View：React 组件构成的视图层
+State：一个对象，保存整个应用状态
+* Action：一个对象，描述事件
+State：一个对象，保存整个应用状态
+* connect 方法：一个函数，绑定 State 到 View
+State：一个对象，保存整个应用状态
+* dispatch 方法：一个函数，发送 Action 到 State
 
 ### redux
 
