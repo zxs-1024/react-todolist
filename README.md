@@ -1,17 +1,18 @@
-熟悉 `dva` 框架 、`Redux` 、 `Ant Design`
+# 熟悉 `dva` 框架 、`Redux`
+
+### [Jump To Do List Page](https://zhanghao-zhoushan.github.io/react-todolist/build/index.html)
 
 ## 核心概念
 
-. State：一个对象，保存整个应用状态
-. View：React 组件构成的视图层
-. Action：一个对象，描述事件
-. connect 方法：一个函数，绑定 State 到 View
-. dispatch 方法：一个函数，发送 Action 到 State
+* State：一个对象，保存整个应用状态
+* View：React 组件构成的视图层
+* Action：一个对象，描述事件
+* connect 方法：一个函数，绑定 State 到 View
+* dispatch 方法：一个函数，发送 Action 到 State
 
 ## redux
 
 [Redux 入门教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
-
 
 ## redux-thunk
 
@@ -44,10 +45,10 @@
 `Provider` 组件，可以让容器组件拿到 `state`
 
 
-## Redux-saga
+## [Redux-saga](https://redux-saga-in-chinese.js.org/)
 
-使用 redux saga 进行异步操作。
-[redux-saga-in-chinese](https://redux-saga-in-chinese.js.org/)
+使用 `redux saga` 进行异步操作。
+
 
 ## dva-model-extend
 
