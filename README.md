@@ -1,6 +1,6 @@
 # To Do List
 
-### [Jump To Do List Page](https://zhanghao-zhoushan.github.io/react-todolist/build/index.html)
+### [Jump To Do List Page](https://zhanghao-zhoushan.github.io/react-todolist/dist/index.html)
 
 ### Github Pages 部署项目
 项目是用 `create-react-app` 构建，使用 `redux` 管理数据状态，是一个熟悉 `react` 、 `jsx` 语法，熟悉 `redux`  、 `dva` 构建项目的练手项目，项目 `UI` 还是比较不错的，采用了 `react` 官网颜色配置，作为日常 `TODO` 记录。
