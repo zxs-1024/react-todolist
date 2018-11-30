@@ -1,7 +1,7 @@
-.header{
+.header {
   width: 60%;
-  margin: 0 auto; 
-  padding: 0 20%; 
+  margin: 0 auto;
+  padding: 0 20%;
   background: #20232a;
   color: #61dafb;
   height: 60px;
@@ -10,7 +10,7 @@
   justify-content: space-around;
 }
 
-.header-input{
+.header-input {
   width: 60%;
   height: 24px;
   background: #20232a;
@@ -21,20 +21,20 @@
   margin: 17px 0;
 }
 
-.main{
+.main {
   color: #61dafb;
   width: 60%;
   padding: 0;
   margin: 1rem auto;
 }
 
-.nav{
+.nav {
   height: 40px;
   line-height: 40px;
   font-weight: bold;
 }
 
-.todo{
+.todo {
   position: relative;
   background: #fff;
   border-radius: 3px;
@@ -42,7 +42,7 @@
   margin-bottom: 15px;
 }
 
-.checkbox{
+.checkbox {
   width: 22px;
   height: 22px;
   margin: 0 0 0 12px;
@@ -50,7 +50,7 @@
   vertical-align: text-bottom;
 }
 
-.delete{
+.delete {
   position: absolute;
   top: 6.5px;
   right: 10px;
@@ -70,31 +70,32 @@
   color: #61dafb;
 }
 
-.value{
+.value {
   display: inline-block;
   height: 40px;
   line-height: 40px;
   padding-left: 10px;
 }
 
-.log{
+.log {
   color: #20232a;
   font-size: 14px;
   text-align: center;
 }
 
-.footer{
+.footer {
   width: 60%;
   margin: 0 auto;
   color: #61dafb;
 }
 
 @media screen and (max-width: 650px) {
-  .main, .footer{
+  .main,
+  .footer {
     width: 90%;
   }
-  .header{
+  .header {
     width: 100%;
-    padding: 0; 
+    padding: 0;
   }
 }

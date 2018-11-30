@@ -1,25 +1,21 @@
-import dva from 'dva'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import './index.css'
+import App from './App'
+import * as serviceWorker from './serviceWorker'
+import { Provider } from 'react-redux'
 
-const data = localStorage.getItem('todos')
-const todos = data ? JSON.parse(data) : []
+import store from './store'
 
-// 1. Initialize
-const app = dva({
-  initialState: { todo: { todos, isAllChecked: todos.every(todo => todo.isDone) } },
-  onStateChange: ({ todo: { todos } }) => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }
-})
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
 
-// 2. Plugins
-// app.use({});
+  document.getElementById('root')
+)
 
-// 3. Model
-app.model(require('./models/todo').default)
-
-// 4. Router
-app.router(require('./router').default)
-
-// 5. Start
-app.start('#root')
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister()

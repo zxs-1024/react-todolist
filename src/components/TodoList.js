@@ -1,30 +1,28 @@
-import React, { Component } from 'react'
-import { connect } from 'dva'
-import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
 import Todo from './Todo'
-import styles from '../routes/App.css'
 
-class TodoNav extends Component {
+class TodoNav extends React.Component {
   render() {
-    const { todos = [], isDoing } = this.props
+    const { todo = [], isDoing } = this.props
     return (
-      <ul className={styles.main}>
-        <li className={styles.nav}>{isDoing ? 'isDoing' : 'isDone'}</li>
-        {
-          isDoing ?
-            todos.map((todo = {}, index) => (
-              !todo.isDone &&
-              <Todo index={index} todo={todo} key={index} />
-            )) : todos.map((todo = {}, index) => (
-              todo.isDone &&
-              <Todo index={index} todo={todo} key={index} />
-            ))
-        }
+      <ul className="main">
+        <li className="nav">{isDoing ? 'isDoing' : 'isDone'}</li>
+        {isDoing
+          ? todo.map(
+              (todo, index) =>
+                !todo.isDone && <Todo index={index} todo={todo} key={index} />
+            )
+          : todo.map(
+              (todo, index) =>
+                todo.isDone && <Todo index={index} todo={todo} key={index} />
+            )}
       </ul>
     )
   }
 }
-class TodoList extends Component {
+
+class TodoList extends React.Component {
   render() {
     return (
       <div>
@@ -35,14 +33,8 @@ class TodoList extends Component {
   }
 }
 
-TodoList.propTypes = {
-  todos: PropTypes.array.isRequired,
-}
+const mapState = state => ({
+  todo: state.todo
+})
 
-function mapStateToProps(state) {
-  return {
-    todos: state.todo.todos
-  }
-}
-
-export default connect(mapStateToProps)(TodoList)
+export default connect(mapState)(TodoList)

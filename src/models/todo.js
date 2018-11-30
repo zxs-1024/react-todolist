@@ -1,74 +1,28 @@
-export default {
+// function to create a one second delay
+const delay = time => new Promise(resolve => setTimeout(() => resolve(), time))
 
-  namespace: 'todo',
-
-  state: {
-    todos: [],
-    isAllChecked: false
-  },
-
-  subscriptions: {
-    setup({ dispatch, history }) {  // eslint-disable-line
-      return history.listen(({ pathname }) => {
-        console.log('subscriptions', pathname)
-      })
-    },
-  },
-
-  effects: {
-    *save({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'addTodo' });
-    },
-  },
-
+const todo = {
+  state: [{ value: '冲鸭！！！', isDone: true }],
   reducers: {
-    addTodo(state, { payload }) {
-      const todos = [...state.todos, payload]
-      return { ...state, todos }
+    addTodo(state, payload) {
+      console.log([...state, payload])
+      return [...state, payload]
     },
-
-    deleteTodo(state, { index }) {
-      let todos = [...state.todos]
-      todos.splice(index - 1, 1)
-      return {
-        ...state,
-        todos,
-        isAllChecked: todos.every(todo => todo.isDone)
-      }
+    handleChange(state, payload) {
+      console.log([...state, payload])
+      return [...state, payload]
     },
-
-    changeIsDone(state, { payload: { index, isDone } }) {
-      let todos = [...state.todos]
-      let isAllChecked = state.isAllChecked
-      todos[index].isDone = !isDone
-      const isDoneLength = todos.filter(todo => todo.isDone).length
-      if (isDoneLength === todos.length) {
-        isAllChecked = true
-      } else if (isDoneLength === 0) {
-        isAllChecked = false
-      }
-      return { ...state, todos, isAllChecked }
-    },
-
-    clearIsDone(state, { payload }) {
-      const todos = [
-        ...state.todos.filter(todo => !todo.isDone)
-      ]
-      if (todos.length === 0) state.isAllChecked = false
-      return { ...state, todos }
-    },
-
-    checkedAll(state, params) {
-      const isAllChecked = !state.isAllChecked
-      state.todos.map(todo => {
-        return todo.isDone = isAllChecked
-      })
-      const todos = [...state.todos]
-      return {
-        ...state,
-        todos,
-        isAllChecked
-      }
+    increment(state, payload) {
+      console.log('increment', state)
+      return { ...state, count: state.count + payload }
     }
-  }
+  },
+  effects: dispatch => ({
+    async incrementAsync(payload, rootState) {
+      await delay(1000)
+      dispatch.todo.increment(payload)
+    }
+  })
 }
+
+export { todo }

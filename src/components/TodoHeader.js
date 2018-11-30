@@ -1,36 +1,41 @@
 import React from 'react'
-import { connect } from 'dva'
-import styles from '../routes/App.css'
+import { connect } from 'react-redux'
+// import styles from '../App.css'
 
 class TodoHeader extends React.Component {
-
   handleKeyUp = e => {
     if (e.keyCode === 13) {
       const value = e.target.value
       if (!value) return
       e.target.value = ''
-      this.addTodo(value)
+      this.props.addTodo(value)
     }
-  }
-
-  addTodo(value) {
-    this.props.dispatch({
-      type: 'todo/addTodo',
-      payload: {
-        value,
-        isDone: false
-      }
-    })
   }
 
   render() {
     return (
-      <div className={styles.header}>
+      <div className="header">
         <div>To Do List</div>
-        <input className={styles['header-input']} onKeyUp={this.handleKeyUp} type="text" placeholder="Come On Add Todo" />
+        <input
+          className="header-input"
+          onKeyUp={this.handleKeyUp}
+          type="text"
+          placeholder="Come On Add Todo"
+        />
       </div>
     )
   }
 }
 
-export default connect()(TodoHeader)
+const mapDispatch = ({ todo: { addTodo } }) => ({
+  addTodo: value =>
+    addTodo({
+      value,
+      isDone: false
+    })
+})
+
+export default connect(
+  null,
+  mapDispatch
+)(TodoHeader)
