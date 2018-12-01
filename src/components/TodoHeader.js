@@ -14,10 +14,10 @@ class TodoHeader extends React.Component {
 
   render() {
     return (
-      <div className="header">
+      <div className="todo__header">
         <div>To Do List</div>
         <input
-          className="header-input"
+          className="todo__header_input"
           onKeyUp={this.handleKeyUp}
           type="text"
           placeholder="Come On Add Todo"
@@ -31,7 +31,7 @@ const mapDispatch = ({ todo: { addTodo } }) => ({
   addTodo: value =>
     addTodo({
       value,
-      isDone: false
+      done: false
     })
 })
 

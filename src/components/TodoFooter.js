@@ -1,50 +1,48 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import styles from './App.css'
 
 class TodoFooter extends Component {
+  state = { isCheckedAll: false }
+
   handleChangeCheckedAll = () => {
-    const isAllChecked = !this.props.isAllChecked
-    this.props.dispatch({
-      type: 'todo/checkedAll',
-      payload: {
-        isAllChecked
-      }
-    })
+    const isCheckedAll = !this.state.isCheckedAll
+    console.log('handleChangeCheckedAll', isCheckedAll)
+    this.setState({ isCheckedAll })
+    this.props.checkedAll({ isCheckedAll })
   }
 
   clearIsDone = () => {
-    this.props.dispatch({
-      type: 'todo/clearIsDone'
-    })
+    this.props.clearIsDone()
   }
 
   render() {
     return (
-      <div className={styles.footer}>
-        <div className={styles.nav}>Operation</div>
-        <div className={styles.todo}>
+      <div className="todo__footer">
+        <div className="todo__list_nav">Operation</div>
+        <div className="todo__item">
           <input
-            className={styles.checkbox}
+            className="todo__checkbox"
             type="checkbox"
             checked={this.props.isAllChecked}
             onChange={this.handleChangeCheckedAll}
           />
-          <span className={styles.value}>Select All</span>
-          <span onClick={this.clearIsDone} className={styles.delete}>
+          <span className="todo__item_value">Select All</span>
+          <span onClick={this.clearIsDone} className="todo__delete">
             Select Delete
           </span>
         </div>
-        <p className={styles.log}>Copyright © 2017 by Sailor</p>
+        <p className="todo__log">Copyright © 2017 by Sailor</p>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    isAllChecked: state.todo.isAllChecked
-  }
-}
+const mapDispatch = ({ todo: { checkedAll, clearIsDone } }) => ({
+  checkedAll: payload => checkedAll(payload),
+  clearIsDone: () => clearIsDone()
+})
 
-export default connect(mapStateToProps)(TodoFooter)
+export default connect(
+  null,
+  mapDispatch
+)(TodoFooter)

@@ -2,43 +2,37 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class Todo extends Component {
-  // handleDelete = () => {
-  //   const { index } = this.props
-  //   this.props.dispatch({
-  //     type: 'todo/deleteTodo',
-  //     payload: { index }
-  //   })
-  // }
+  handleDelete = () => {
+    const { index } = this.props
+    this.props.deleteTodo({ index })
+  }
 
-  // handleChange = () => {
-  //   const {
-  //     index,
-  //     todo: { isDone }
-  //   } = this.props
-  //   this.props.dispatch({
-  //     type: 'todo/changeIsDone',
-  //     payload: { index, isDone }
-  //   })
-  // }
+  handleChange = () => {
+    const {
+      index,
+      todo: { done }
+    } = this.props
+    this.props.changeIsDone({ index, done: !done })
+  }
 
   render() {
     const {
-      todo: { isDone, value },
+      todo: { done, value },
       index
     } = this.props
     return (
-      <li className="todo">
+      <li className="todo__item">
         <input
-          className="checkbox"
+          className="todo__checkbox"
           type="checkbox"
-          checked={isDone}
-          onChange={this.props.handleChange}
+          checked={done}
+          onChange={this.handleChange}
         />
-        <span className="value">
+        <span className="todo__item_value">
           {`${index + 1}、`}
           {value}
         </span>
-        <span className="delete" onClick={this.props.handleDelete}>
+        <span className="delete" onClick={this.handleDelete}>
           Delete
         </span>
       </li>
@@ -47,8 +41,8 @@ class Todo extends Component {
 }
 
 const mapDispatch = ({ todo: { deleteTodo, changeIsDone } }) => ({
-  deleteTodo: index => deleteTodo(index),
-  changeIsDone: (index, isDone) => changeIsDone({ index, isDone: !isDone })
+  deleteTodo: payload => deleteTodo(payload),
+  changeIsDone: payload => changeIsDone(payload)
 })
 
 export default connect(
