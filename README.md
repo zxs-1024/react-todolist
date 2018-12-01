@@ -4,7 +4,11 @@
 
 ### Github Pages 部署项目
 
-项目是用 `create-react-app` 构建，使用 `redux` 管理数据状态，是一个熟悉 `react` 、 `jsx` 语法，熟悉 `redux` 、 `dva` 构建项目的练手项目，项目 `UI` 还是比较不错的，采用了 `react` 官网颜色配置，作为日常 `TODO` 记录。
+~~项目是用 `create-react-app` 构建，使用 `redux` 管理数据状态，是一个熟悉 `react` 、 `jsx` 语法，熟悉 `redux` 、 `dva` 构建项目的练手项目。~~
+
+项目是用 `create-react-app` 构建，使用 `remacth` 管理数据状态，是一个熟悉 `react` 、 `jsx` 语法，熟悉 `redux` 、 构建项目的练手项目。
+
+项目 `UI` 还是比较不错的，采用了 `react` 官网颜色配置，作为日常 `TODO` 记录。
 
 ![To Do List](https://images-cdn.shimo.im/X4lpiQm8dhcEJF87/tolist.jpg!thumbnail)
 
@@ -21,14 +25,9 @@
 ## 核心概念
 
 - State：一个对象，保存整个应用状态
-  State：一个对象，保存整个应用状态
-  State：一个对象，保存整个应用状态
 - View：React 组件构成的视图层
-  State：一个对象，保存整个应用状态
 - Action：一个对象，描述事件
-  State：一个对象，保存整个应用状态
 - connect 方法：一个函数，绑定 State 到 View
-  State：一个对象，保存整个应用状态
 - dispatch 方法：一个函数，发送 Action 到 State
 
 ### redux
@@ -72,7 +71,7 @@
 
 ### dva-model-extend
 
-扩展 `dva` 的 `model`
+扩展 `dva` 的 `model`
 
 [dva-model-extend](https://github.com/dvajs/dva-model-extend)
 
