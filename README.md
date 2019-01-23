@@ -1,6 +1,6 @@
 # To Do List
 
-### [Jump To Do List Page](https://zhanghao-zhoushan.github.io/react-todolist/dist/index.html)
+### [Jump To Do List Page](https://zhanghao-zhoushan.github.io/react-todolist/build/index.html)
 
 ### Github Pages 部署项目
 
