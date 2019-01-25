@@ -32,7 +32,7 @@ class Todo extends Component {
           {`${index + 1}、`}
           {value}
         </span>
-        <span className="delete" onClick={this.handleDelete}>
+        <span className="todo__delete" onClick={this.handleDelete}>
           Delete
         </span>
       </li>
